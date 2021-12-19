@@ -1,9 +1,9 @@
 f =: '1'= > cutLF fread './data/3.txt'
 
-gamma =: (%2) <: (+/%#)"1 @ |:
-eps =: (%2) > (+/%#)"1 @ |:
+gamma =: -:@#<+/
+eps =: -.@gamma
 
-echo */ #.> (gamma f); eps f
+echo */ #. > (gamma ; eps) f
 
 cmpGamma =: {{ (x{gamma y) = x {"1 y }}
 filterGamma =: {{ ((x&cmpGamma) # [) y }}
