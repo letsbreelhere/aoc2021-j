@@ -6,17 +6,13 @@ win =: (+./@:(5= +/@:(,.|:)))"2
 
 games =: +./\ (=&boards)"0 plays
 gamesPerBoard =: 0 2 3 |: games
-winPlayPerBoard =: (win gamesPerBoard) i."1] 1
+winningPlays =: (win gamesPerBoard) i."1] 1
 
-winningBoard =: (i. (<./)) winPlayPerBoard
-winPlay =: winningBoard { winPlayPerBoard
-winMask =: winningBoard { winPlay { games
-unplayed =: +/ |: +/ (-.winMask) * winningBoard{boards
-echo unplayed * winPlay{plays
+winningBoard =: (i. (<./)) winningPlays
+unplayed =: (-.(<@,~winningBoard) { winningPlays { games) * winningBoard { boards
+echo (+/;unplayed) * winningBoard { winningPlays { plays
 
-winningBoard =: (i. (>./)) winPlayPerBoard
-winPlay =: winningBoard { winPlayPerBoard
-winMask =: winningBoard { winPlay { games
-unplayed =: +/ |: +/ (-.winMask) * winningBoard{boards
-echo unplayed * winPlay{plays
+winningBoard =: (i. (>./)) winningPlays
+unplayed =: (-.(<@,~winningBoard) { winningPlays { games) * winningBoard { boards
+echo (+/;unplayed) * winningBoard { winningPlays { plays
 exit''
