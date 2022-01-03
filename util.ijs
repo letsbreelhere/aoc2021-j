@@ -1,6 +1,6 @@
 (9!:3) 2 NB. Boxed representation
 
-column =: {{ >(<(i.#y); x){y }}
+column =: {&|:
 strsplit =: #@[ }.each [ (E. <;.1 ]) ,
 
 NB. y*y upper triangular matrix
