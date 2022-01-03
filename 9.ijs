@@ -18,11 +18,9 @@ ds =: 1 0 ; _1 0 ; 0 1 ; 0 _1
 dfs =: dyad define "1 1
   results =. (#~ (e.&y)) (x&+ each ds)
   if. 0=#results do. a: return. end.
-  s =. results
-  while. #s do.
+  for_ijk. results do.
     without =. y -. results
-    results =. (<x), results, , (> {. s) dfs without
-    s =. }. s
+    results =. (<x), results, , (> ijk) dfs without
   end.
   ~. (#~ ~:&a:) results
 )
