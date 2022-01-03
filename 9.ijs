@@ -3,14 +3,14 @@ m =: "."0 > cutLF fread './data/9.txt'
 NB. Rotate a table's columns by x, blanking with _ rather than cycling leftover columns
 rot =: |.!._"0 _
 
-lowMask =: m < <./ (1 |: _1 1 rot |: m) , _1 1 rot m
+minNeighbors =: <./ (1 |: _1 1 rot |: m) , _1 1 rot m
+lowMask =: m < minNeighbors
 lowPoints =: (, lowMask) # , m
 echo +/ >: lowPoints
 
 NB. Min, but leave 9s as they are
-modMin =: {{ x&<.`] @. (y=9) y }}
-basinStep =:  {{ (<./ (1 |: _1 1 rot |: y) , _1 1 rot y) modMin"0 y }}
-basinMap =: 9 ~: basinStep^:_ m
+modMin =: <.`] @. (9=])
+basinMap =: 9 ~: (minNeighbors&(modMin"0))^:_ m
 
 basinPoints =: (, # (,@{@(i.each@<"0@$))) basinMap
 ds =: 1 0 ; _1 0 ; 0 1 ; 0 _1
