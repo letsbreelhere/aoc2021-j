@@ -11,7 +11,5 @@ flash =: monad define
 step =: [: flash^:_ >:
 
 echo +/ , 0 = {{ step^:y start }} i. 101
-NB. Not ideal; I can iterate to a steady state but it's a bit more annoying to
-NB. find the iteration number without just guessing.
-echo ({{ step^:y start }} i. 1000) i. (10 10 $ 0)
+echo > }. {{(step >{.y) ; >:>}.y }}^:(*@+/@,@>@{.)^:_] start;0
 exit''
