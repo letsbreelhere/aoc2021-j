@@ -12,7 +12,9 @@ lt =: |:@ut
 chr =: 4&u:
 ord =: 3&u:
 
-NB. Rotate a table's columns by x, blanking with 0 rather than cycling leftover columns
+NB. Rotate a table's rows by x, blanking with 0 rather than cycling leftover columns
 rot =: |.!.0"0 _
+NB. Same, but rotate columns
 rotc =: rot&.|:
+NB. `a b rot2 t` rotates t by a columns and b rows
 rot2 =: {{ ({. x) rotc (}. x) rot y}}
