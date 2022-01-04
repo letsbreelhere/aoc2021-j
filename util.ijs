@@ -1,5 +1,6 @@
-boxy =: (9!:3) 2
-tree =: (9!:3) 4
+DISP =: (9!:3)
+BOX =: 2
+TREE =: 4
 
 column =: {&|:
 strsplit =: #@[ }.each [ (E. <;.1 ]) ,
@@ -10,3 +11,8 @@ lt =: |:@ut
 
 chr =: 4&u:
 ord =: 3&u:
+
+NB. Rotate a table's columns by x, blanking with 0 rather than cycling leftover columns
+rot =: |.!.0"0 _
+rotc =: rot&.|:
+rot2 =: {{ ({. x) rotc (}. x) rot y}}
