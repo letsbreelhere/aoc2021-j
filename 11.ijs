@@ -1,12 +1,10 @@
 start =: "."0 ;._2 fread './data/11.txt'
 
-dirs =: (, { ;~ 1 0 _1) -. < 0 0
-rot =: |.!.0"0 _
-rotc =: rot&.|:
-rot2 =: {{ ({. x) rotc (}. x) rot y}}
+dirs =: }. , { ;~ 0 1 _1
+rot =: |.!.0
 
 flash =: monad define
-  (y ~: 0) * (9 >: y) * y + +/ ; rot2&(9 < y) each dirs
+  (y ~: 0) * (9 >: y) * y + +/ > rot&(9 < y) each dirs
 )
 step =: [: flash^:_ >:
 
