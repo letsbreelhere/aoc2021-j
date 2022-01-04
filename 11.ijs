@@ -1,4 +1,4 @@
-start =: "."0 > cutLF fread './data/11.txt'
+start =: "."0 ;._2 fread './data/11.txt'
 
 dirs =: (, { ;~ 1 0 _1) -. < 0 0
 rot =: |.!.0"0 _
@@ -11,5 +11,5 @@ flash =: monad define
 step =: [: flash^:_ >:
 
 echo +/ , 0 = {{ step^:y start }} i. 101
-echo > }. {{(step >{.y) ; >:>}.y }}^:(*@+/@,@>@{.)^:_] start;0
+echo > }. {{(step >{.y) ; >:>}.y }}^:{{*+/,>{.y}}^:_ ] start;0
 exit''
