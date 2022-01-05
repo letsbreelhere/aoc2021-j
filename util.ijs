@@ -18,3 +18,6 @@ NB. Same, but rotate columns
 rotc =: rot&.|:
 NB. `a b rot2 t` rotates t by a columns and b rows
 rot2 =: {{ ({. x) rotc (}. x) rot y}}
+
+pad=: 0,0,~0,.0,.~]
+life =: {{ (=&3 +. y * (=&4)) > +/@, each (1,:3 3) <;._3 pad y }}
