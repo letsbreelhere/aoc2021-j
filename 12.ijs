@@ -5,11 +5,13 @@ caps =: u: (u:inv'A') + i.26
 
 pathsPrime =: dyad define
   'graph visited prev' =. x
-  nbrs =. >neighbors {~ nodes i. y
+  if. (y = <'end') do. echo ',' joinstring |. 'end';prev end.
+  nbrs =. -.&(<'start') >neighbors {~ nodes i. y
   if. (y = <'end') do. 1 return. end.
   if. (0=#nbrs) do. 0 return. end.
   visited =. (y&,)`] @. (*/ (>y) e. caps) visited
-  +/ (graph ; visited ; prev) pathsPrime"_ 0 (nbrs -. visited)
+  if. 1<>./#/.~visited do. nbrs =. nbrs -. visited end.
+  +/ (graph ; visited ; <y,prev) pathsPrime"_ 0 nbrs
 )
 paths =: (graph;(>a:);(>a:))&pathsPrime
 
