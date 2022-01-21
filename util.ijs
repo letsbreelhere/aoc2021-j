@@ -9,8 +9,10 @@ NB. y*y upper triangular matrix
 ut =: <:/~@i.
 lt =: |:@ut
 
-chr =: 4&u:
+chr =: u:
 ord =: 3&u:
+cap =: {{ u: 65 + 3 u: y }}
+cap =: u:@(-&32)@(3&u:)
 
 NB. Rotate a table's rows by x, blanking with 0 rather than cycling leftover columns
 rot =: |.!.0"0 _
